@@ -70,7 +70,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='products', verbose_name=_("category"), null=True, )
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, related_name='products', verbose_name=_("brand"), null=True, blank=True)
     name = models.CharField(_("name"), max_length=200)
-    sku = models.CharField(_("SKU"), max_length=15, unique=True, default=generaste_code)
+    sku = models.CharField(_("SKU"), max_length=15, default=generaste_code)
     description = models.TextField(_("description"), blank=True)
     price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, validators=[MinValueValidator(Decimal('0.00'))])
     flag = models.CharField(_("flag"), max_length=50, blank=True, choices=FLAG_TYPES)
@@ -79,6 +79,7 @@ class Product(models.Model):
     updated = models.DateTimeField(_("updated"), auto_now=True)
     image = models.ImageField(_("image"), upload_to='products/', blank=True, null=True)
     slug = models.SlugField(_("slug"), max_length=200, unique=True, blank=True)
+    stock = models.PositiveIntegerField(_("stock"), default=0)
 
     class Meta:
         verbose_name = _("product")
