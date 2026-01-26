@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django_summernote',
     'products',
     'orders',
-    'accounts',
     'settings',
 ]
 
@@ -134,4 +134,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'raafatmahmoud4600@gmail.com'
-EMAIL_HOST_PASSWORD = 'emqmkimxjylzdxal'
+EMAIL_HOST_PASSWORD = 'ejnadevzmogpojoj'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', 
+    'accounts.backends.EmailBackend',             
+]

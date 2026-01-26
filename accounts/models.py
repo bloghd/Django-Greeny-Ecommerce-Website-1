@@ -14,7 +14,7 @@ def generaste_code(length=6):
 
 class Profile(models.Model):
     code = models.CharField(_("code"), max_length=15, unique=True, default=generaste_code)
-    code_used = models.BooleanField(_("code used"), unique=True, default=False)
+    code_used = models.BooleanField(_("code used"),default=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', verbose_name=_("user"))
     # bio = models.TextField(_("bio"), blank=True, null=True)
     # birth_date = models.DateField(_("birth date"), blank=True, null=True)
