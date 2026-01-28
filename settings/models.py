@@ -51,4 +51,17 @@ class Company(models.Model):
     def __str__(self):
         return self.name
     
+class Home(models.Model):
+    title = models.CharField(_("home title"), max_length=200)
+    subtitle = models.CharField(_("home subtitle"), max_length=300, blank=True, null=True)
+    banner_image = models.ImageField(_("banner image"), upload_to='home_banners/')
+    activate = models.BooleanField(_("activate"), default=True)
+
+    class Meta:
+        verbose_name = _("home")
+        verbose_name_plural = _("homes")
+
+    def __str__(self):
+        return self.title
+    
 

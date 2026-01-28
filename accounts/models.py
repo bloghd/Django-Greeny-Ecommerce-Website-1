@@ -27,12 +27,6 @@ class Profile(models.Model):
     # social_links = models.JSONField(_("social links"), blank=True, null=True, help_text=_("A JSON object containing social media links."))
 
 
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
-
-
 
 
     class Meta:

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Country, City, Company
+from .models import Country, City, Company, Home
 
 
 @admin.register(Country)
@@ -18,5 +18,13 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'phone_number', 'email', 'website')
     search_fields = ('name', 'city__name', 'city__country__name')
     list_filter = ('city__country',)
+
+@admin.register(Home)
+class HomeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'activate')
+    search_fields = ('title',)
+    list_filter = ('activate',)
+
+    
 
 

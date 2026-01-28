@@ -20,9 +20,12 @@ def products_context_processors(request):
             'products': products
         })
 
+    products = Product.objects.all()
+
     return {
         'categories': categories,
         'brands': brands,
         'category_with_products': category_with_products,
         'brand_with_products': brand_with_products,
+        'products': products,
     }

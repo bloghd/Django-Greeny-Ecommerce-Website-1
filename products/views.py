@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from products.models import Product, ProductImage, Category, Brand
+from products.models import Product, ProductImage, Category, Brand,Review
 from django.db.models import Count
 
 
@@ -22,9 +22,10 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        myproduct = self.get_object()
-        context['images'] = ProductImage.objects.filter(product=myproduct)
-        context['related_products'] = Product.objects.filter(category=myproduct.category).exclude(id=myproduct.id)[:10]
+        queryset = self.get_object()
+        context['images'] = ProductImage.objects.filter(product=queryset)
+        context['related_products'] = Product.objects.filter(category=queryset.category).exclude(id=queryset.id)[:10]
+        context['reviews'] = Review.objects.filter(product=queryset)
         return context
     
 class CategoryListView(ListView):

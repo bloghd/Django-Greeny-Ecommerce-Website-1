@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Brand, Product, ProductImage
+from .models import Category, Brand, Product, ProductImage, Review
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Category)
@@ -30,4 +30,11 @@ class ProductImageAdmin(admin.ModelAdmin):
     list_display = ('product', 'image')
     search_fields = ('product__name',)
     list_filter = ('product',)
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('product', 'user', 'rating', 'created')
+    search_fields = ('product__name', 'user__username', 'review')
+    list_filter = ('rating', 'created')
+
 

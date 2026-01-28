@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,6 +71,8 @@ TEMPLATES = [
                 'settings.get_site_context_processors.site_context_processors',
                 'accounts.users_context_processors.users_context_processors',
                 'products.products_context_processors.products_context_processors',
+                'orders.cart_context_processors.cart_context_processor',
+
             ],
         },
     },

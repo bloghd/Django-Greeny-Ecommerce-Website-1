@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .forms import UserRegistrationForm, UserActivationForm
 from .models import Profile, UserAddress, UserPhoneNumber
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -50,7 +51,7 @@ def activate(request,username):
 
     return render(request, 'registration/activate.html', {'form': form, 'username': username})
 
-
+@login_required
 def profile_view(request):
     user = request.user
 

@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.validators import MinValueValidator, MaxValueValidator
 from decimal import Decimal
 import random
+from django.contrib.auth.models import User
 
 def generaste_code(length=6):
     nums = '0123456789'
@@ -84,7 +85,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = _("product")
         verbose_name_plural = _("products")
-        ordering = ['-created']
+        ordering = ['-id']
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -115,7 +116,7 @@ class ProductImage(models.Model):
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews', verbose_name=_("product"))
-    user_name = models.CharField(_("user name"), max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("user"), related_name='user')
     rating = models.PositiveIntegerField(_("rating"), validators=[MinValueValidator(1), MaxValueValidator(5)])
     review = models.TextField(_("Review"), blank=True)
     created = models.DateTimeField(_("created"), default=timezone.now)
@@ -126,4 +127,4 @@ class Review(models.Model):
         ordering = ['-created']
 
     def __str__(self):
-        return f"Review by {self.user_name} for {self.product.name}"
+        return f"Review by {self.user.username} for {self.product.name}"
