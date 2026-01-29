@@ -6,6 +6,7 @@ from settings.models import Country, City
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import random
+from products.models import Product
 
 def generaste_code(length=6):
     nums = '0123456789'
@@ -21,6 +22,7 @@ class Profile(models.Model):
     # country = models.ForeignKey(Country, on_delete=models.SET_NULL, related_name='user_country', verbose_name=_("country"), null=True)
     # city = models.ForeignKey(City, on_delete=models.SET_NULL, related_name='user_city', verbose_name=_("city"), null=True)
     profile_image = models.ImageField(_("profile image"), upload_to='profiles/', blank=True, null=True)
+    favourite_products = models.ManyToManyField(Product, related_name='favoured_by', verbose_name=_("favourite products"), blank=True, null=True)
     # phone_number = models.CharField(_("phone number"), max_length=20, blank=True, null=True)
     # address = models.CharField(_("address"), max_length=255, blank=True, null=True)
     # website = models.URLField(_("website"), blank=True, null=True)

@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
+
+from products.models import Product
 from .forms import UserRegistrationForm, UserActivationForm
 from .models import Profile, UserAddress, UserPhoneNumber
 from django.contrib.auth.decorators import login_required
@@ -65,3 +68,14 @@ def profile_view(request):
         'phone_numbers': phone_numbers,
     }
     return render(request, 'registration/profile.html', context)
+
+
+def add_wishlist(request):
+    user = request.user
+    profile, created = Profile.objects.get_or_create(user=user)
+    context = {
+        'profile': profile,
+    }
+
+
+    return render(request, 'registration/wishlist.html', context)

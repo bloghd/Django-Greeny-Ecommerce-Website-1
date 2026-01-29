@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView
 from products.models import Product, ProductImage, Category, Brand,Review
 from django.db.models import Count
+from accounts.models import Profile
 
 
 class ProductListView(ListView):
@@ -72,7 +74,20 @@ class BrandDetailView(DetailView):
         )
         return context
 
-    
+
+def add_favourite_product(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        product = get_object_or_404(Product, id=product_id)
+        profile, created = Profile.objects.get_or_create(user=request.user)
+        if product in profile.favourite_products.all():
+            profile.favourite_products.remove(product)
+            message = 'Product removed from favourites.'
+        else:
+            profile.favourite_products.add(product)
+            message = 'Product added to favourites.'
+        return JsonResponse({'message': message})
+    return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
 
 

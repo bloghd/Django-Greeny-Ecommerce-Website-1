@@ -31,6 +31,13 @@ class Cart(models.Model):
         verbose_name = _("cart")
         verbose_name_plural = _("carts")
         ordering = ['-created_at']
+        
+    def get_total(self):
+        total = Decimal('0.00')
+        for item in self.cart_items.all():
+            total += item.get_total_price()
+        return total
+    
 
     def __str__(self):
         return f"Cart {self.code} - {self.cart_status}"
@@ -40,6 +47,7 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name='product_items', verbose_name=_("product"))
     quantity = models.PositiveIntegerField(_("quantity"), default=1)
     price = models.DecimalField(_("price"), max_digits=10, decimal_places=2)
+    total = models.DecimalField(_("total"), max_digits=10, decimal_places=2, default=Decimal('0.00'))
 
 
     class Meta:
@@ -50,6 +58,7 @@ class CartItem(models.Model):
         return f"{self.quantity} x {self.product.name} in Cart {self.cart.code}"
     def get_total_price(self):
         return self.quantity * self.price
+    
   
 
 ORDER_STATUS = [

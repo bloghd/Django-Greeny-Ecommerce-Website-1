@@ -7,6 +7,7 @@ from decimal import Decimal
 import random
 from django.contrib.auth.models import User
 
+
 def generaste_code(length=6):
     nums = '0123456789'
     return ''.join(random.choice(nums) for _ in range(length))
@@ -97,7 +98,12 @@ class Product(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
-
+    def get_avg_rating(self):
+        reviews = self.reviews.all()
+        if reviews.exists():
+            total_rating = sum(review.rating for review in reviews)
+            return total_rating / reviews.count()
+        return 0
 
     def __str__(self):
         return self.name
