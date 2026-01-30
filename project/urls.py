@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import debug_toolbar
+from dj_rest_auth.views import LoginView, LogoutView, PasswordResetView, PasswordChangeView, UserDetailsView
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView
@@ -21,6 +22,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api-docs/', SpectacularSwaggerView.as_view(url_name='schema')),
+    path('api/auth/', include('dj_rest_auth.urls')),
 ]
 
 if settings.DEBUG:
