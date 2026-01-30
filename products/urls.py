@@ -14,13 +14,13 @@ urlpatterns = [
 
 
     #url api
-    path('api/cbv', ProductListAPI.as_view()),
-    path('api/cbv/<int:pk>', ProductDetailAPI.as_view()),
-    path('api/category/cbv', CategoryListAPI.as_view()),
-    path('api/category/cbv/<int:pk>', CategoryDetailAPI.as_view()),
-    path('api/brand/cbv', BrandListAPI.as_view()),
-    path('api/brand/cbv/<int:pk>', BrandDetailAPI.as_view()),
-    path('api/review/cbv', ReviewListAPI.as_view()),
-    path('api/review/cbv/<int:id>', ReviewDetailAPI.as_view()),
+    path('api/list', ProductListAPI.as_view()),
+    path('api/<int:pk>', ProductDetailAPI.as_view()),
+    path('api/category/', CategoryListAPI.as_view()),
+    path('api/category/<int:pk>', CategoryDetailAPI.as_view(), name='category_detail'),
+    path('api/brand/', BrandListAPI.as_view()),
+    path('api/brand/<int:pk>', BrandDetailAPI.as_view(), name='brand_detail2'),
+    path('api/review/', ReviewListAPI.as_view()),
+    path('api/review/<int:id>', ReviewDetailAPI.as_view()),
 
 ]
