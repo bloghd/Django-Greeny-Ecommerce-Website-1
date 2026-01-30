@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-29 21:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: .\accounts\models.py:17 .\orders\models.py:23 .\orders\models.py:73
+msgid "code"
+msgstr ""
+
+#: .\accounts\models.py:18
+msgid "code used"
+msgstr ""
+
+#: .\accounts\models.py:19 .\accounts\models.py:53 .\accounts\models.py:65
+#: .\orders\models.py:22 .\orders\models.py:72 .\products\models.py:125
+msgid "user"
+msgstr ""
+
+#: .\accounts\models.py:24
+msgid "profile image"
+msgstr ""
+
+#: .\accounts\models.py:25
+msgid "favourite products"
+msgstr ""
+
+#: .\accounts\models.py:35
+msgid "profile"
+msgstr ""
+
+#: .\accounts\models.py:36
+msgid "profiles"
+msgstr ""
+
+#: .\accounts\models.py:54 .\settings\models.py:37
+msgid "phone number"
+msgstr ""
+
+#: .\accounts\models.py:55 .\accounts\models.py:69
+msgid "type"
+msgstr ""
+
+#: .\accounts\models.py:58
+msgid "user phone number"
+msgstr ""
+
+#: .\accounts\models.py:59
+msgid "user phone numbers"
+msgstr ""
+
+#: .\accounts\models.py:66 .\settings\models.py:10 .\settings\models.py:19
+msgid "country"
+msgstr ""
+
+#: .\accounts\models.py:67 .\settings\models.py:22 .\settings\models.py:36
+msgid "city"
+msgstr ""
+
+#: .\accounts\models.py:68 .\settings\models.py:35
+msgid "address"
+msgstr ""
+
+#: .\accounts\models.py:72
+msgid "user address"
+msgstr ""
+
+#: .\accounts\models.py:73
+msgid "user addresses"
+msgstr ""
+
+#: .\orders\models.py:24
+msgid "cart status"
+msgstr ""
+
+#: .\orders\models.py:25 .\orders\models.py:75
+msgid "created at"
+msgstr ""
+
+#: .\orders\models.py:26 .\orders\models.py:76
+msgid "updated at"
+msgstr ""
+
+#: .\orders\models.py:27 .\orders\models.py:77
+msgid "delivred at"
+msgstr ""
+
+#: .\orders\models.py:28 .\orders\models.py:78
+msgid "is paid"
+msgstr ""
+
+#: .\orders\models.py:31 .\orders\models.py:46
+msgid "cart"
+msgstr ""
+
+#: .\orders\models.py:32
+msgid "carts"
+msgstr ""
+
+#: .\orders\models.py:47 .\orders\models.py:90 .\products\models.py:87
+#: .\products\models.py:112 .\products\models.py:124
+msgid "product"
+msgstr ""
+
+#: .\orders\models.py:48 .\orders\models.py:91
+msgid "quantity"
+msgstr ""
+
+#: .\orders\models.py:49 .\orders\models.py:92 .\products\models.py:77
+msgid "price"
+msgstr ""
+
+#: .\orders\models.py:50
+msgid "total"
+msgstr ""
+
+#: .\orders\models.py:54
+msgid "cart item"
+msgstr ""
+
+#: .\orders\models.py:55
+msgid "cart items"
+msgstr ""
+
+#: .\orders\models.py:74
+msgid "order status"
+msgstr ""
+
+#: .\orders\models.py:81 .\orders\models.py:89
+msgid "order"
+msgstr ""
+
+#: .\orders\models.py:82
+msgid "orders"
+msgstr ""
+
+#: .\orders\models.py:96
+msgid "order item"
+msgstr ""
+
+#: .\orders\models.py:97
+msgid "order items"
+msgstr ""
+
+#: .\products\models.py:17 .\products\models.py:43 .\products\models.py:74
+msgid "name"
+msgstr ""
+
+#: .\products\models.py:18 .\products\models.py:44 .\products\models.py:83
+msgid "slug"
+msgstr ""
+
+#: .\products\models.py:19 .\products\models.py:82 .\products\models.py:113
+msgid "image"
+msgstr ""
+
+#: .\products\models.py:23 .\products\models.py:72
+msgid "category"
+msgstr ""
+
+#: .\products\models.py:24
+msgid "categories"
+msgstr ""
+
+#: .\products\models.py:45
+msgid "Image"
+msgstr ""
+
+#: .\products\models.py:48 .\products\models.py:73
+msgid "brand"
+msgstr ""
+
+#: .\products\models.py:49
+msgid "brands"
+msgstr ""
+
+#: .\products\models.py:75
+msgid "SKU"
+msgstr ""
+
+#: .\products\models.py:76 .\settings\models.py:34
+msgid "description"
+msgstr ""
+
+#: .\products\models.py:78
+msgid "flag"
+msgstr ""
+
+#: .\products\models.py:79
+msgid "available"
+msgstr ""
+
+#: .\products\models.py:80 .\products\models.py:128
+msgid "created"
+msgstr ""
+
+#: .\products\models.py:81
+msgid "updated"
+msgstr ""
+
+#: .\products\models.py:84
+msgid "stock"
+msgstr ""
+
+#: .\products\models.py:88
+msgid "products"
+msgstr ""
+
+#: .\products\models.py:116
+msgid "product image"
+msgstr ""
+
+#: .\products\models.py:117
+msgid "product images"
+msgstr ""
+
+#: .\products\models.py:126
+msgid "rating"
+msgstr ""
+
+#: .\products\models.py:127
+msgid "Review"
+msgstr ""
+
+#: .\products\models.py:131
+msgid "review"
+msgstr ""
+
+#: .\products\models.py:132
+msgid "reviews"
+msgstr ""
+
+#: .\settings\models.py:6
+msgid "country name"
+msgstr ""
+
+#: .\settings\models.py:7
+msgid "country code"
+msgstr ""
+
+#: .\settings\models.py:11
+msgid "countries"
+msgstr ""
+
+#: .\settings\models.py:18
+msgid "city name"
+msgstr ""
+
+#: .\settings\models.py:23
+msgid "cities"
+msgstr ""
+
+#: .\settings\models.py:32
+msgid "company name"
+msgstr ""
+
+#: .\settings\models.py:33
+msgid "logo"
+msgstr ""
+
+#: .\settings\models.py:38
+msgid "email"
+msgstr ""
+
+#: .\settings\models.py:39
+msgid "website"
+msgstr ""
+
+#: .\settings\models.py:40
+msgid "facebook_link"
+msgstr ""
+
+#: .\settings\models.py:41
+msgid "twitter_link"
+msgstr ""
+
+#: .\settings\models.py:42
+msgid "linkedin_link"
+msgstr ""
+
+#: .\settings\models.py:43
+msgid "instagram_link"
+msgstr ""
+
+#: .\settings\models.py:47
+msgid "company"
+msgstr ""
+
+#: .\settings\models.py:48
+msgid "companies"
+msgstr ""
+
+#: .\settings\models.py:55
+msgid "home title"
+msgstr ""
+
+#: .\settings\models.py:56
+msgid "home subtitle"
+msgstr ""
+
+#: .\settings\models.py:57
+msgid "banner image"
+msgstr ""
+
+#: .\settings\models.py:58
+msgid "activate"
+msgstr ""
+
+#: .\settings\models.py:61
+msgid "home"
+msgstr ""
+
+#: .\settings\models.py:62
+msgid "homes"
+msgstr ""
