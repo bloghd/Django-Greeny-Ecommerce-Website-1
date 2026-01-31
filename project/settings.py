@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django_summernote',
     "debug_toolbar",
     'rest_framework',
+    'rest_framework_simplejwt',
+    'django_filters',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'allauth',
@@ -178,8 +180,11 @@ INTERNAL_IPS = [
 ]
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
 }
 
 
