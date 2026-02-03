@@ -1,10 +1,10 @@
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.generic import ListView, DetailView
 from products.models import Product, ProductImage, Category, Brand,Review
 from django.db.models import Count
 from accounts.models import Profile
-
+from .forms import ReviewForm
 
 class ProductListView(ListView):
     model = Product
@@ -30,10 +30,27 @@ class ProductDetailView(DetailView):
         context['reviews'] = Review.objects.filter(product=queryset)
         return context
     
+
+
+def add_review(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            return redirect(reverse('products:product_detail', args=[slug]))
+    else:
+        form = ReviewForm()
+    return render(request, 'products/product_detail.html', {'form': form, 'product': product})
+
+
 class CategoryListView(ListView):
     model = Category
     template_name = 'products/category_list.html'
-    paginate_by = 2
+    paginate_by = 5
 
     def get_queryset(self):
         return Category.objects.annotate(

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Avg
 from .models import Category, Brand, Product, ProductImage, Review
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -17,13 +18,18 @@ class ProductImageInline(admin.TabularInline):
     
 @admin.register(Product)
 class ProductAdmin(SummernoteModelAdmin):
-    list_display = ('name', 'sku', 'price', 'available', 'created', 'updated')
+    list_display = ('id', 'name', 'sku', 'price', 'available', 'created', 'updated', 'review_count', 'average_rating')
     list_filter = ('available', 'created', 'updated', 'category', 'brand')
     list_editable = ('price', 'available')
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImageInline]
     search_fields = ('name', 'sku', 'description')
     summernote_fields = '__all__'
+
+    def review_count(self, obj):
+        return obj.reviews.count()
+    def average_rating(self, obj):
+        return obj.reviews.aggregate(avg_rating=Avg('rating'))['avg_rating']
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):

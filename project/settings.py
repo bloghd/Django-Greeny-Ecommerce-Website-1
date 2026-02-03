@@ -40,18 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django_summernote',
     "debug_toolbar",
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
     'rest_framework.authtoken',
-    'dj_rest_auth',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth.registration',
     'drf_spectacular',
     'products',
     'orders',
@@ -68,7 +62,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -167,12 +160,6 @@ EMAIL_HOST_USER = 'raafatmahmoud4600@gmail.com'
 EMAIL_HOST_PASSWORD = 'ejnadevzmogpojoj'
 
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
@@ -188,7 +175,6 @@ REST_FRAMEWORK = {
 }
 
 
-SITE_ID = 1
 REST_USE_JWT = True
 from datetime import timedelta
 

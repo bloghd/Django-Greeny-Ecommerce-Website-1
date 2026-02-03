@@ -3,12 +3,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import debug_toolbar
-from dj_rest_auth.views import LoginView, LogoutView, PasswordResetView, PasswordChangeView, UserDetailsView
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView
 )
-from django.urls import path
 from rest_framework_simplejwt.views import (
 TokenObtainPairView,
 TokenRefreshView,
@@ -26,8 +24,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api-docs/', SpectacularSwaggerView.as_view(url_name='schema')),
-    path('api/auth/', include('dj_rest_auth.urls')),
+    path('api-docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='api-docs'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 

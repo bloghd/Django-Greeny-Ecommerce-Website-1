@@ -121,7 +121,11 @@
                     </a>
                     {% if user.is_authenticated %}
                         <a href="{% url 'accounts:profile' %}" class="header-widget" title="My Account">
-                            <img src="{{user_profile.profile_image.url}}" alt="user">
+                            {% if user_profile.profile_image %}
+                                <img src="{{user_profile.profile_image.url}}" alt="user">
+                            {% else %}
+                                <img src="{% static 'images/user.png' %}" alt="user">
+                            {% endif %}
                         </a>
                     {% else %}
                         <a href="{% url 'login' %}" class="header-widget" title="My Account">
