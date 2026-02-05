@@ -11,9 +11,24 @@ services:
       - "8000:8000"
     depends_on:
       - redis
+    environment:
+      - DJANGO_SETTINGS_MODULE=project.settings
 
   redis:
     image: redis:7
     container_name: redis_cache
     ports:
       - "6379:6379"
+
+  celery:
+    build: .
+    container_name: celery_worker
+    command: celery -A project worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - web
+    restart: always
+    environment:
+      - DJANGO_SETTINGS_MODULE=project.settings

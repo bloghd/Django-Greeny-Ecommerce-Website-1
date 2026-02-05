@@ -39,3 +39,4 @@ urllib3==2.6.3
 webencodings==0.5.1
 redis
 django-redis
+celery>=5.3.0
