@@ -1,34 +1,23 @@
-version: "3.9"
+version: '4'
 
 services:
-  web:
+  djangoserver:
+    container_name: djgreeny
     build: .
-    container_name: django_app
     command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
     ports:
       - "8000:8000"
-    depends_on:
-      - redis
-    environment:
-      - DJANGO_SETTINGS_MODULE=project.settings
-
-  redis:
-    image: redis:7
-    container_name: redis_cache
-    ports:
-      - "6379:6379"
-
-  celery:
-    build: .
-    container_name: celery_worker
-    command: celery -A project worker --loglevel=info
     volumes:
       - .:/app
+
+  redis:
+    image: redis:latest
+    container_name: redis
+
+  celery:
+    container_name: celery
+    build: .
+    command: celery -A project worker -l INFO
+    restart: always
     depends_on:
       - redis
-      - web
-    restart: always
-    environment:
-      - DJANGO_SETTINGS_MODULE=project.settings

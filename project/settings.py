@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'drf_spectacular',
+    'django_celery_beat',
     'products',
     'orders',
     'settings',
@@ -190,4 +191,10 @@ CACHES = {
         "LOCATION": "redis://redis:6379",
     }
 }
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+# CELERY_TIMEZONE = 'Africa/Cairo'
 
