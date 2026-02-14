@@ -5,6 +5,9 @@ from products.models import Product, ProductImage, Category, Brand,Review
 from django.db.models import Count
 from accounts.models import Profile
 from .forms import ReviewForm
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
 
 class ProductListView(ListView):
     model = Product
@@ -41,7 +44,9 @@ def add_review(request, slug):
             review.product = product
             review.user = request.user
             review.save()
-            return redirect(reverse('products:product_detail', args=[slug]))
+            # return redirect(reverse('products:product_detail', args=[slug]))
+            html = render_to_string('include/reviews.html', {'reviews': Review.objects.filter(product=product)}, request=request)
+            return JsonResponse({'html': html})
     else:
         form = ReviewForm()
     return render(request, 'products/product_detail.html', {'form': form, 'product': product})
